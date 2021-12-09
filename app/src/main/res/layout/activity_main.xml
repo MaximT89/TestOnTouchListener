@@ -16,11 +16,16 @@
 
         <TextView
             android:id="@+id/black_square"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="50dp"
+            android:text="R"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:gravity="center"
             android:layout_marginTop="100dp"
-            android:background="@color/black" />
+            android:background="@drawable/border_letter" />
 
         <TextView
             android:id="@+id/text_status"

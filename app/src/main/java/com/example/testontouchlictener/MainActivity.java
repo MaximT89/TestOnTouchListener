@@ -38,7 +38,19 @@ public class MainActivity extends AppCompatActivity {
         imageView.setLayoutParams(params);
         binding.container.addView(imageView);
 
-        imageView.setOnTouchListener((view, motionEvent) -> {
+        ImageView imageView2 = new ImageView(this);
+        imageView2.setImageResource(R.drawable.orc);
+        imageView2.setLayoutParams(params);
+        binding.container.addView(imageView2);
+
+        getTouchListener(imageView);
+        getTouchListener(imageView2);
+
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void getTouchListener(View view1) {
+        view1.setOnTouchListener((view, motionEvent) -> {
             final int x = (int) motionEvent.getRawX();
             final int y = (int) motionEvent.getRawY();
 
@@ -53,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case MotionEvent.ACTION_UP: {
 
-                    getCurrentCoordinates(imageView);
-                    getCurrentCenterImage(imageView);
+                    getCurrentCoordinates(view1);
+                    getCurrentCenterImage(view1);
                     if (getStatusInterSection()) binding.textStatus.setText("Есть пересечение");
                     else binding.textStatus.setText("Нет пересечения");
 
@@ -83,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
             binding.container.invalidate();
             return true;
         });
-
-
     }
 
     private boolean getStatusInterSection() {
@@ -109,16 +119,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void getCurrentCoordinates(ImageView imageView) {
-        Log.d("TAG", "ACTION_DOWN imageView.getTop(): " + imageView.getTop());
-        Log.d("TAG", "ACTION_DOWN imageView.getBottom(): " + imageView.getBottom());
-        Log.d("TAG", "ACTION_DOWN imageView.getLeft(): " + imageView.getLeft());
-        Log.d("TAG", "ACTION_DOWN imageView.getRight(): " + imageView.getRight());
+    private void getCurrentCoordinates(View view) {
+        Log.d("TAG", "ACTION_DOWN imageView.getTop(): " + view.getTop());
+        Log.d("TAG", "ACTION_DOWN imageView.getBottom(): " + view.getBottom());
+        Log.d("TAG", "ACTION_DOWN imageView.getLeft(): " + view.getLeft());
+        Log.d("TAG", "ACTION_DOWN imageView.getRight(): " + view.getRight());
     }
 
-    private void getCurrentCenterImage(ImageView imageView) {
-        currentTop = imageView.getTop() + (imageView.getBottom() - imageView.getTop()) / 2;
-        currentLeft = imageView.getLeft() + (imageView.getRight() - imageView.getLeft()) / 2;
+    private void getCurrentCenterImage(View view) {
+        currentTop = view.getTop() + (view.getBottom() - view.getTop()) / 2;
+        currentLeft = view.getLeft() + (view.getRight() - view.getLeft()) / 2;
 
         Log.d("TAG", "currentTop: " + currentTop);
         Log.d("TAG", "currentLeft: " + currentLeft);
