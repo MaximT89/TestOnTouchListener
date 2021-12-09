@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 }
+
                 case MotionEvent.ACTION_UP: {
 
                     getCurrentCenterView(view1);
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 }
+
                 case MotionEvent.ACTION_MOVE: {
                     if (x - xDelta + view.getWidth() <= binding.container.getWidth()
                             && y - yDelta + view.getHeight() <= binding.container.getHeight()
@@ -106,9 +108,6 @@ public class MainActivity extends AppCompatActivity {
                         view.setLayoutParams(layoutParams);
                     }
 
-//                    Log.d("TAG", "ACTION_MOVE xDelta: " + x);
-//                    Log.d("TAG", "ACTION_MOVE yDelta: " + y);
-
                     break;
                 }
             }
@@ -117,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Проверка пересечения
     private boolean getStatusInterSection() {
         boolean status = false;
 
