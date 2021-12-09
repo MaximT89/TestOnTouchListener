@@ -18,6 +18,7 @@ import com.example.testontouchlictener.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private int xDelta, yDelta;
+    private int currentTop, currentBottom, currentLeft, currentRight;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
+
+        initView();
 
         LinearLayout.LayoutParams params = new LinearLayout
                 .LayoutParams(150, 150);
@@ -50,13 +53,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case MotionEvent.ACTION_UP: {
 
-                    Log.d("TAG", "ACTION_DOWN imageView.getTop(): " + imageView.getTop());
-                    Log.d("TAG", "ACTION_DOWN imageView.getBottom(): " + imageView.getBottom());
-                    Log.d("TAG", "ACTION_DOWN imageView.getLeft(): " + imageView.getLeft());
-                    Log.d("TAG", "ACTION_DOWN imageView.getRight(): " + imageView.getRight());
-
-//                    Log.d("TAG", "ACTION_UP xDelta: " + x);
-//                    Log.d("TAG", "ACTION_UP yDelta: " + y);
+                    getCurrentCoordinates(imageView);
+                    getCurrentCenterImage(imageView);
+                    if (getStatusInterSection()) binding.textStatus.setText("Есть пересечение");
+                    else binding.textStatus.setText("Нет пересечения");
 
                     break;
                 }
@@ -86,4 +86,42 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private boolean getStatusInterSection() {
+        boolean status = false;
+
+        if (binding.blackSquare.getTop() < currentTop && binding.blackSquare.getBottom() > currentTop
+                && binding.blackSquare.getLeft() < currentLeft && binding.blackSquare.getRight() > currentLeft) {
+            status = true;
+        }
+
+        return status;
+    }
+
+    private void initView() {
+        binding.btnAdd.setOnClickListener(view -> {
+
+            Log.d("TAG", "blackSquare.getTop(): " + binding.blackSquare.getTop());
+            Log.d("TAG", "blackSquare.getBottom(): " + binding.blackSquare.getBottom());
+            Log.d("TAG", "blackSquare.getLeft(): " + binding.blackSquare.getLeft());
+            Log.d("TAG", "blackSquare.getRight(): " + binding.blackSquare.getRight());
+
+        });
+    }
+
+    private void getCurrentCoordinates(ImageView imageView) {
+        Log.d("TAG", "ACTION_DOWN imageView.getTop(): " + imageView.getTop());
+        Log.d("TAG", "ACTION_DOWN imageView.getBottom(): " + imageView.getBottom());
+        Log.d("TAG", "ACTION_DOWN imageView.getLeft(): " + imageView.getLeft());
+        Log.d("TAG", "ACTION_DOWN imageView.getRight(): " + imageView.getRight());
+    }
+
+    private void getCurrentCenterImage(ImageView imageView) {
+        currentTop = imageView.getTop() + (imageView.getBottom() - imageView.getTop()) / 2;
+        currentLeft = imageView.getLeft() + (imageView.getRight() - imageView.getLeft()) / 2;
+
+        Log.d("TAG", "currentTop: " + currentTop);
+        Log.d("TAG", "currentLeft: " + currentLeft);
+    }
+
 }
