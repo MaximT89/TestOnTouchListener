@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TestOnTouchLictener</string>
+    <item name="letter" type="id"/>
 </resources>
