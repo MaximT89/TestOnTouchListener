@@ -61,13 +61,11 @@ public class MainActivity extends AppCompatActivity {
         binding.show.setOnClickListener(view -> {
 
             for (int i = 0; i < currentWord.length(); i++) {
-                Log.d(TAG, "getTop: " + (i+1) + " " + this.findViewById(i+1).getTop());
-                Log.d(TAG, "getBottom: " + (i+1) + " " + this.findViewById(i+1).getBottom());
-                Log.d(TAG, "getLeft: " + (i+1) + " " + this.findViewById(i+1).getLeft());
-                Log.d(TAG, "getRight: " + (i+1) + " " + this.findViewById(i+1).getRight());
+                Log.d(TAG, "getTop: " + (i + 1) + " " + this.findViewById(i + 1).getTop());
+                Log.d(TAG, "getBottom: " + (i + 1) + " " + this.findViewById(i + 1).getBottom());
+                Log.d(TAG, "getLeft: " + (i + 1) + " " + this.findViewById(i + 1).getLeft());
+                Log.d(TAG, "getRight: " + (i + 1) + " " + this.findViewById(i + 1).getRight());
             }
-
-
         });
 
     }
@@ -102,15 +100,22 @@ public class MainActivity extends AppCompatActivity {
                     //todo тут нужно запустить проверку на пересечения с ячейками для букв
                     for (int i = 0; i < currentWord.length(); i++) {
 
-                        if (this.findViewById(i+1).getTop() < currentTop && this.findViewById(i+1).getBottom() > currentTop
-                                && this.findViewById(i+1).getLeft() < currentLeft && this.findViewById(i+1).getRight() > currentLeft) {
+                        if (this.findViewById(i + 1).getTop() < currentTop && this.findViewById(i + 1).getBottom() > currentTop
+                                && this.findViewById(i + 1).getLeft() < currentLeft && this.findViewById(i + 1).getRight() > currentLeft) {
 
+                            if (view1.getText().toString().equalsIgnoreCase(String.valueOf(currentWord.charAt(i)))) {
+                                Log.d(TAG, "getTouchListener: " + "Есть совпадение");
 
+                                TextView textView = this.findViewById(i+1);
+                                textView.setText(String.valueOf(currentWord.charAt(i)));
 
+                                view1.setVisibility(View.INVISIBLE);
+
+                            } else {
+                                Log.d(TAG, "getTouchListener: " + "Нет совпадения");
+                            }
                         }
-
                     }
-
 
                     break;
                 }
@@ -162,6 +167,18 @@ public class MainActivity extends AppCompatActivity {
 
     // Присваиваем буквы для букв которые будем прикладывать
     private void generateBlockLetters() {
+
+        binding.letter1.setVisibility(View.VISIBLE);
+        binding.letter2.setVisibility(View.VISIBLE);
+        binding.letter3.setVisibility(View.VISIBLE);
+        binding.letter4.setVisibility(View.VISIBLE);
+        binding.letter5.setVisibility(View.VISIBLE);
+        binding.letter6.setVisibility(View.VISIBLE);
+        binding.letter7.setVisibility(View.VISIBLE);
+        binding.letter8.setVisibility(View.VISIBLE);
+        binding.letter9.setVisibility(View.VISIBLE);
+        binding.letter10.setVisibility(View.VISIBLE);
+
         binding.letter1.setText(arrayLetters.get(0).toUpperCase());
         binding.letter2.setText(arrayLetters.get(1).toUpperCase());
         binding.letter3.setText(arrayLetters.get(2).toUpperCase());
