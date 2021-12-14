@@ -166,33 +166,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Проверка пересечения
-    private boolean getStatusInterSection() {
-        boolean status = false;
-
-//        if (binding.blackSquare.getTop() < currentTop && binding.blackSquare.getBottom() > currentTop
-//                && binding.blackSquare.getLeft() < currentLeft && binding.blackSquare.getRight() > currentLeft) {
-//            status = true;
-//        }
-
-        return status;
-    }
-
     // Данный метод запускает новый уровень
     private void startGame() {
         binding.startGame.setOnClickListener(view -> {
+            clearGameField();
             createNewWord();
             createCurrentLife();
             updateCurrentLife(0);
-            clearGameField();
             createArrayLetters();
             generateBlockWord();
             generateQuestionText();
             generateBlockLetters();
-
         });
     }
-
 
     @SuppressLint("SetTextI18n")
     private void updateCurrentLife(int i) {
@@ -308,7 +294,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void generateCoordinates(View view) {
+    // todo тестовый метод для отображения координат любого view в лог
+    private void getCoordinate(View view) {
         Log.d(TAG, "view.getTop(): " + view.getTop());
         Log.d(TAG, "view.getBottom(): " + view.getBottom());
         Log.d(TAG, "view.getLeft(): " + view.getLeft());
