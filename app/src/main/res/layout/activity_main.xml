@@ -18,16 +18,6 @@
 
 
 
-        <TextView
-            android:id="@+id/text_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="15dp"
-            android:text="Нет пересечения"
-            android:textSize="20dp" />
-
-
 
     </FrameLayout>
 
@@ -35,149 +25,157 @@
         android:id="@+id/container2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
         android:layout_above="@id/start_game"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal">
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_1"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="68dp"-->
-<!--        android:layout_marginTop="370dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <TextView
+            android:id="@+id/text_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="15dp"
+            android:textSize="20dp" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_2"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="124dp"-->
-<!--        android:layout_marginTop="370dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_1"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="68dp"-->
+        <!--        android:layout_marginTop="370dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_3"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="180dp"-->
-<!--        android:layout_marginTop="370dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_2"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="124dp"-->
+        <!--        android:layout_marginTop="370dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_4"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="236dp"-->
-<!--        android:layout_marginTop="370dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_3"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="180dp"-->
+        <!--        android:layout_marginTop="370dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_5"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="292dp"-->
-<!--        android:layout_marginTop="370dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_4"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="236dp"-->
+        <!--        android:layout_marginTop="370dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_6"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="68dp"-->
-<!--        android:layout_marginTop="426dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_5"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="292dp"-->
+        <!--        android:layout_marginTop="370dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_7"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="124dp"-->
-<!--        android:layout_marginTop="426dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_6"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="68dp"-->
+        <!--        android:layout_marginTop="426dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_8"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="180dp"-->
-<!--        android:layout_marginTop="426dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_7"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="124dp"-->
+        <!--        android:layout_marginTop="426dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_9"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="236dp"-->
-<!--        android:layout_marginTop="426dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_8"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="180dp"-->
+        <!--        android:layout_marginTop="426dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/letter_10"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginLeft="292dp"-->
-<!--        android:layout_marginTop="426dp"-->
-<!--        android:background="@drawable/border_letter"-->
-<!--        android:gravity="center"-->
-<!--        android:text=""-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:visibility="visible" />-->
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_9"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="236dp"-->
+        <!--        android:layout_marginTop="426dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/letter_10"-->
+        <!--        android:layout_width="50dp"-->
+        <!--        android:layout_height="50dp"-->
+        <!--        android:layout_marginLeft="292dp"-->
+        <!--        android:layout_marginTop="426dp"-->
+        <!--        android:background="@drawable/border_letter"-->
+        <!--        android:gravity="center"-->
+        <!--        android:text=""-->
+        <!--        android:textColor="@color/black"-->
+        <!--        android:textSize="30dp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        android:visibility="visible" />-->
 
     </FrameLayout>
 

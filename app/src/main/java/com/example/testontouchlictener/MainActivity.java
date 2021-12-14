@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = "TAG";
     private ActivityMainBinding binding;
     private int xDelta, yDelta, displayW, displayH;
-    private int currentTop, currentLeft;
-    private String currentWord;
+    private int currentTop, currentLeft, startLeftMargin, startTopMargin, currentLife;
+    private String currentWord, currentQuestion;
     private ArrayList<String> arrayLetters = new ArrayList<>();
     private float px;
 
-    @SuppressLint({"ClickableViewAccessibility", "ResourceType"})
+    @SuppressLint({"ClickableViewAccessibility", "ResourceType", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Данным методом получам ширину и высоту текущего дисплея
     private void getCurrentMetrics() {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("ResourceType")
     private void initView() {
+
+        // todo это тестовые нужно потом удалить
         binding.show.setOnClickListener(view -> {
             for (int i = 0; i < currentWord.length(); i++) {
                 Log.d(TAG, "getTop: " + (i + 1) + " " + this.findViewById(i + 1).getTop());
@@ -69,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "getRight: " + (i + 1) + " " + this.findViewById(i + 1).getRight());
             }
         });
-
     }
 
     // Конвертер dp в px
@@ -79,9 +82,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d("TAG", "px: " + px);
     }
 
+    // Обработка касания к буквам
     @SuppressLint("ClickableViewAccessibility")
     private void getTouchListener(TextView view1) {
         view1.setOnTouchListener((view, motionEvent) -> {
+
             final int x = (int) motionEvent.getRawX();
             final int y = (int) motionEvent.getRawY();
 
@@ -91,6 +96,14 @@ public class MainActivity extends AppCompatActivity {
 
                     xDelta = x - lParams.leftMargin;
                     yDelta = y - lParams.topMargin;
+
+                    startLeftMargin = lParams.leftMargin;
+                    startTopMargin = lParams.topMargin;
+
+                    Log.d(TAG, "lParams.leftMargin: " + lParams.leftMargin);
+                    Log.d(TAG, "lParams.topMargin: " + lParams.topMargin);
+                    Log.d(TAG, "x: " + x);
+                    Log.d(TAG, "y: " + y);
 
                     break;
                 }
@@ -114,8 +127,17 @@ public class MainActivity extends AppCompatActivity {
                                 view1.setVisibility(View.INVISIBLE);
 
                             } else {
+                                updateCurrentLife(1);
                                 Log.d(TAG, "getTouchListener: " + "Нет совпадения");
                             }
+                        } else {
+                            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) view.getLayoutParams();
+
+                            layoutParams.leftMargin = startLeftMargin;
+                            layoutParams.topMargin = startTopMargin;
+                            layoutParams.rightMargin = 0;
+                            layoutParams.bottomMargin = 0;
+                            view1.setLayoutParams(layoutParams);
                         }
                     }
 
@@ -160,14 +182,46 @@ public class MainActivity extends AppCompatActivity {
     private void startGame() {
         binding.startGame.setOnClickListener(view -> {
             createNewWord();
+            createCurrentLife();
+            updateCurrentLife(0);
             clearGameField();
             createArrayLetters();
             generateBlockWord();
+            generateQuestionText();
             generateBlockLetters();
 
         });
     }
 
+
+    @SuppressLint("SetTextI18n")
+    private void updateCurrentLife(int i) {
+        currentLife = currentLife - i;
+        binding.textStatus.setText("Жизни " + currentLife);
+    }
+
+    private void createCurrentLife() {
+        currentLife = 3;
+    }
+
+    // Метод для генерации TextView с текущим вопросом
+    private void generateQuestionText() {
+        LinearLayout.LayoutParams params = new LinearLayout
+                .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(Math.round(15 * px), Math.round(15 * px), Math.round(15 * px), Math.round(3 * px));
+
+        TextView textView = new TextView(this);
+        textView.setLayoutParams(params);
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextColor(Color.BLACK);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
+        textView.setText(currentQuestion);
+
+        binding.container.addView(textView);
+    }
+
+    // Очищаем все элементы из контейнера в котором гуляют буквы
     private void clearGameField() {
         binding.container.removeAllViews();
     }
@@ -237,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < currentWord.length(); i++) {
             LinearLayout.LayoutParams params = new LinearLayout
                     .LayoutParams(Math.round(50 * px), Math.round(50 * px));
-            params.setMargins(Math.round(3 * px) + Math.round(temp * px), Math.round(3 * px), Math.round(3 * px), Math.round(3 * px));
+            params.setMargins(Math.round(3 * px) + Math.round(temp * px), Math.round(150 * px), Math.round(3 * px), Math.round(3 * px));
 
             TextView textView = new TextView(this);
             textView.setLayoutParams(params);
@@ -263,7 +317,9 @@ public class MainActivity extends AppCompatActivity {
 
     // Данным методом мы получаем текущее слово для текущего уровня
     private void createNewWord() {
-        currentWord = Words.getRandomWord();
+        Words word = Words.getRandomWord();
+        currentWord = word.getWord();
+        currentQuestion = word.getQuestions();
     }
 
     // Данным методом получаем координаты центра любого view
