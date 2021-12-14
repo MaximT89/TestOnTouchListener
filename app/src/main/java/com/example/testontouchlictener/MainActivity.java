@@ -6,10 +6,12 @@ import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -26,7 +28,7 @@ import java.util.Collections;
 public class MainActivity extends AppCompatActivity {
     private String TAG = "TAG";
     private ActivityMainBinding binding;
-    private int xDelta, yDelta;
+    private int xDelta, yDelta, displayW, displayH;
     private int currentTop, currentLeft;
     private String currentWord;
     private ArrayList<String> arrayLetters = new ArrayList<>();
@@ -41,25 +43,25 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
         convertPxInDip();
+        getCurrentMetrics();
         startGame();
 
     }
 
+    private void getCurrentMetrics() {
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        displayW = size.x;
+        displayH = size.y;
+
+        Log.d(TAG, "displayW: " + displayW);
+        Log.d(TAG, "displayH: " + displayH);
+    }
+
     @SuppressLint("ResourceType")
     private void initView() {
-        getTouchListener(binding.letter1);
-        getTouchListener(binding.letter2);
-        getTouchListener(binding.letter3);
-        getTouchListener(binding.letter4);
-        getTouchListener(binding.letter5);
-        getTouchListener(binding.letter6);
-        getTouchListener(binding.letter7);
-        getTouchListener(binding.letter8);
-        getTouchListener(binding.letter9);
-        getTouchListener(binding.letter10);
-
         binding.show.setOnClickListener(view -> {
-
             for (int i = 0; i < currentWord.length(); i++) {
                 Log.d(TAG, "getTop: " + (i + 1) + " " + this.findViewById(i + 1).getTop());
                 Log.d(TAG, "getBottom: " + (i + 1) + " " + this.findViewById(i + 1).getBottom());
@@ -158,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
     private void startGame() {
         binding.startGame.setOnClickListener(view -> {
             createNewWord();
+            clearGameField();
             createArrayLetters();
             generateBlockWord();
             generateBlockLetters();
@@ -165,30 +168,42 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void clearGameField() {
+        binding.container.removeAllViews();
+    }
+
     // Присваиваем буквы для букв которые будем прикладывать
     private void generateBlockLetters() {
+        int temp = Math.round(((displayW - ((5 * Math.round(50 * px)) + (Math.round((5 * 6) * px)))) >> 1)/px);
+        int temp1 = temp;
+        int temp2 = temp;
 
-        binding.letter1.setVisibility(View.VISIBLE);
-        binding.letter2.setVisibility(View.VISIBLE);
-        binding.letter3.setVisibility(View.VISIBLE);
-        binding.letter4.setVisibility(View.VISIBLE);
-        binding.letter5.setVisibility(View.VISIBLE);
-        binding.letter6.setVisibility(View.VISIBLE);
-        binding.letter7.setVisibility(View.VISIBLE);
-        binding.letter8.setVisibility(View.VISIBLE);
-        binding.letter9.setVisibility(View.VISIBLE);
-        binding.letter10.setVisibility(View.VISIBLE);
+        for (int i = 0; i < 10; i++) {
+            LinearLayout.LayoutParams params = new LinearLayout
+                    .LayoutParams(Math.round(50 * px), Math.round(50 * px));
 
-        binding.letter1.setText(arrayLetters.get(0).toUpperCase());
-        binding.letter2.setText(arrayLetters.get(1).toUpperCase());
-        binding.letter3.setText(arrayLetters.get(2).toUpperCase());
-        binding.letter4.setText(arrayLetters.get(3).toUpperCase());
-        binding.letter5.setText(arrayLetters.get(4).toUpperCase());
-        binding.letter6.setText(arrayLetters.get(5).toUpperCase());
-        binding.letter7.setText(arrayLetters.get(6).toUpperCase());
-        binding.letter8.setText(arrayLetters.get(7).toUpperCase());
-        binding.letter9.setText(arrayLetters.get(8).toUpperCase());
-        binding.letter10.setText(arrayLetters.get(9).toUpperCase());
+            if(i < 5){
+                params.setMargins(Math.round(3 * px) + Math.round(temp1 * px), Math.round(370 * px), Math.round(3 * px), Math.round(3 * px));
+                temp1 += 56;
+            } else {
+                params.setMargins(Math.round(3 * px) + Math.round(temp2 * px), Math.round(426 * px), Math.round(3 * px), Math.round(3 * px));
+                temp2 += 56;
+            }
+
+            TextView textView = new TextView(this);
+            textView.setLayoutParams(params);
+            textView.setBackground(ContextCompat.getDrawable(this, R.drawable.border_letter));
+            textView.setGravity(Gravity.CENTER);
+            textView.setTextColor(Color.BLACK);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
+            textView.setTypeface(Typeface.DEFAULT_BOLD);
+            textView.setId(i + 1 + 100);
+
+            binding.container.addView(textView);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText(arrayLetters.get(i).toUpperCase());
+            getTouchListener(textView);
+        }
     }
 
     // Метод генерирующий случайную русскую букву
@@ -201,32 +216,23 @@ public class MainActivity extends AppCompatActivity {
 
     // Метод для преобразования слова в коллекцию строк
     private void createArrayLetters() {
-
         arrayLetters.clear();
 
         char[] charArray = currentWord.toCharArray();
 
-        for (char c : charArray) {
-            arrayLetters.add(String.valueOf(c));
-        }
+        for (char c : charArray) arrayLetters.add(String.valueOf(c));
 
         int j = 10 - arrayLetters.size();
 
-        for (int i = 0; i < j; i++) {
-            arrayLetters.add(generateRandomLetter());
-        }
+        for (int i = 0; i < j; i++) arrayLetters.add(generateRandomLetter());
 
         Collections.shuffle(arrayLetters);
         Log.d(TAG, "arrayLetters: " + arrayLetters);
-
     }
 
     // Данный метод генерирует поля для букв загаданного слова
     private void generateBlockWord() {
-
-        binding.container.removeAllViews();
-
-        int temp = 0;
+        int temp = Math.round(((displayW - ((currentWord.length() * Math.round(50 * px)) + (Math.round((currentWord.length() * 6) * px)))) >> 1)/px);
 
         for (int i = 0; i < currentWord.length(); i++) {
             LinearLayout.LayoutParams params = new LinearLayout
@@ -244,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
 
             binding.container.addView(textView);
 
-            temp += 55;
+            temp += 56;
         }
     }
 
