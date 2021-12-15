@@ -1,4 +1,4 @@
-package com.example.testontouchlictener;
+package com.example.testontouchlictener.presentation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
@@ -21,12 +22,15 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.testontouchlictener.R;
+import com.example.testontouchlictener.data.Words;
 import com.example.testontouchlictener.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
+
     private String TAG = "TAG";
     private ActivityMainBinding binding;
     private int xDelta, yDelta, displayW, displayH;
@@ -46,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         convertPxInDip();
         getCurrentMetrics();
         startGame();
-
     }
 
     // Данным методом получам ширину и высоту текущего дисплея
@@ -80,6 +83,26 @@ public class MainActivity extends AppCompatActivity {
         int dip = 1;
         px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, getResources().getDisplayMetrics());
         Log.d("TAG", "px: " + px);
+    }
+
+    // Обновляем отгадываемое слово
+    private void updateTempWord(){
+        String tempWord = "";
+
+        // тут составляем временное слово которое отгадывает пользователь
+        for (int i = 0; i < currentWord.length(); i++) {
+            TextView textView = this.findViewById(i + 1);
+            if(!TextUtils.isEmpty(textView.getText())){
+                tempWord += textView.getText().toString();
+            }
+        }
+
+        if(tempWord.equalsIgnoreCase(currentWord)){
+            //todo тут нужен метод для победы в уровне
+            binding.textStatus.setText("Поздравляем вы выйграли"); // для теста
+        }
+
+        Log.d(TAG, "tempWord: " + tempWord);
     }
 
     // Обработка касания к буквам
@@ -125,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                                 textView.setText(String.valueOf(currentWord.charAt(i)));
 
                                 view1.setVisibility(View.INVISIBLE);
+                                updateTempWord();
 
                             } else {
                                 updateCurrentLife(1);
@@ -184,6 +208,10 @@ public class MainActivity extends AppCompatActivity {
     private void updateCurrentLife(int i) {
         currentLife = currentLife - i;
         binding.textStatus.setText("Жизни " + currentLife);
+
+        if (currentLife == 0){
+            //todo тут нужен метод для поражения в игре (когда закончились жизни)
+        }
     }
 
     private void createCurrentLife() {
@@ -232,6 +260,8 @@ public class MainActivity extends AppCompatActivity {
 
             TextView textView = new TextView(this);
             textView.setLayoutParams(params);
+
+            // todo сделать разные стили для букв под разные блоки с уровнями
             textView.setBackground(ContextCompat.getDrawable(this, R.drawable.border_letter));
             textView.setGravity(Gravity.CENTER);
             textView.setTextColor(Color.BLACK);
@@ -281,6 +311,8 @@ public class MainActivity extends AppCompatActivity {
 
             TextView textView = new TextView(this);
             textView.setLayoutParams(params);
+
+            // todo сделать разные стили для букв под разные блоки с уровнями
             textView.setBackground(ContextCompat.getDrawable(this, R.drawable.border_letter));
             textView.setGravity(Gravity.CENTER);
             textView.setTextColor(Color.BLACK);
