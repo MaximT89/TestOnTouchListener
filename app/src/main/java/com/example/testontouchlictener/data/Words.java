@@ -22,7 +22,7 @@ public class Words {
         return questions;
     }
 
-    public static Words getRandomWord(){
+    public static Words getRandomWord() {
         List<Words> arrayWords = new ArrayList<>();
         arrayWords.add(new Words("ПИСЬМО", "Их доставляет печкин"));
         arrayWords.add(new Words("ОКНО", "В Европу"));

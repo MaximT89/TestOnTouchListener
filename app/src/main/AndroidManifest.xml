@@ -11,13 +11,16 @@
         android:theme="@style/Theme.TestOnTouchLictener">
         <activity
             android:name=".presentation.MainActivity"
+            android:screenOrientation="fullSensor"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.MainActivity2"
+            android:screenOrientation="fullSensor"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

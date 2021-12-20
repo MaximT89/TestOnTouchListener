@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.testontouchlictener.presentation.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_choiseLevelFragment"
+            app:destination="@id/choiseLevelFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.testontouchlictener.presentation.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment_to_choiseLevelFragment"
+            app:destination="@id/choiseLevelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/choiseLevelFragment"
+        android:name="com.example.testontouchlictener.presentation.ChoiseLevelFragment"
+        android:label="fragment_choise_level"
+        tools:layout="@layout/fragment_choise_level" >
+        <action
+            android:id="@+id/action_choiseLevelFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+</navigation>
