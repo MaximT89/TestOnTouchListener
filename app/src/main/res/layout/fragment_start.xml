@@ -1,14 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_start_3"
     tools:context=".presentation.StartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/block_game_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/letter_1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="О"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="Т"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="Г"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_4"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="А"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_5"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="Д"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_6"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="А"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_7"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="Й"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/letter_8"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="С"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_9"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="Л"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_10"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="О"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_11"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="В"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/letter_12"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_margin="3dp"
+                android:background="@drawable/border_letter"
+                android:gravity="center"
+                android:text="А"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_go_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:text="start game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_go_select_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="select level"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
