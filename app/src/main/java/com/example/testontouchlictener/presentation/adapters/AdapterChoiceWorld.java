@@ -2,7 +2,6 @@ package com.example.testontouchlictener.presentation.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +22,11 @@ import java.util.List;
 
 public class AdapterChoiceWorld extends RecyclerView.Adapter<AdapterChoiceWorld.ViewHolder> {
 
-    private final List<Worlds> worlds = Worlds.getWorlds();
+    private final List<Worlds> worlds;
     private final Context mContext;
 
-    public AdapterChoiceWorld(Context context) {
+    public AdapterChoiceWorld(List<Worlds> worlds, Context context) {
+        this.worlds = worlds;
         mContext = context;
     }
 
@@ -53,7 +53,13 @@ public class AdapterChoiceWorld extends RecyclerView.Adapter<AdapterChoiceWorld.
 
         holder.worldName.setText(world.getNameWorld());
         holder.bgImageWorld.setBackgroundResource(world.getBgImage());
-        holder.currentProgress.setText("Прогесс мира: " + dao.getWorldById(world.getIdWorld()).levelInWorld + " / " + world.getMaxLevelInWorld());
+
+        if (dao.getWorldById(world.getIdWorld()) != null) {
+            holder.currentProgress.setVisibility(View.VISIBLE);
+            holder.currentProgress.setText("Прогесс мира: " + dao.getWorldById(world.getIdWorld()).levelInWorld + " / " + world.getMaxLevelInWorld());
+        } else {
+            holder.currentProgress.setVisibility(View.GONE);
+        }
     }
 
     @Override
