@@ -1,4 +1,4 @@
-package com.example.testontouchlictener.presentation;
+package com.example.testontouchlictener.presentation.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;

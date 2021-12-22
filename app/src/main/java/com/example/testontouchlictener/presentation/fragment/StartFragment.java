@@ -1,4 +1,4 @@
-package com.example.testontouchlictener.presentation;
+package com.example.testontouchlictener.presentation.fragment;
 
 import static com.example.testontouchlictener.utils.GeneratorAnimation.*;
 
@@ -48,18 +48,18 @@ public class StartFragment extends Fragment {
         navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         navController = Objects.requireNonNull(navHostFragment).getNavController();
 
-        makeShakeAnimation(requireActivity(), binding.letter1, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter2, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter3, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter4, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter5, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter6, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter7, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter8, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter9, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter10, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter11, getRandomDuration());
-        makeShakeAnimation(requireActivity(), binding.letter12, getRandomDuration());
+        makeShakeAnimation(binding.letter1, getRandomDuration());
+        makeShakeAnimation(binding.letter2, getRandomDuration());
+        makeShakeAnimation(binding.letter3, getRandomDuration());
+        makeShakeAnimation(binding.letter4, getRandomDuration());
+        makeShakeAnimation(binding.letter5, getRandomDuration());
+        makeShakeAnimation(binding.letter6, getRandomDuration());
+        makeShakeAnimation(binding.letter7, getRandomDuration());
+        makeShakeAnimation(binding.letter8, getRandomDuration());
+        makeShakeAnimation(binding.letter9, getRandomDuration());
+        makeShakeAnimation(binding.letter10, getRandomDuration());
+        makeShakeAnimation(binding.letter11, getRandomDuration());
+        makeShakeAnimation(binding.letter12, getRandomDuration());
 
         binding.btnGoGame.setOnClickListener(view -> {
             navController.navigate(R.id.action_startFragment_to_gameFragment, null, new NavOptions.Builder()

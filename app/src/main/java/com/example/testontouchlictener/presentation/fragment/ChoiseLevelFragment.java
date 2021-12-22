@@ -1,4 +1,4 @@
-package com.example.testontouchlictener.presentation;
+package com.example.testontouchlictener.presentation.fragment;
 
 import android.os.Bundle;
 

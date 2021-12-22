@@ -1,4 +1,4 @@
-package com.example.testontouchlictener.presentation;
+package com.example.testontouchlictener.presentation.fragment;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -43,7 +43,7 @@ public class GameFragment extends Fragment {
     private float px;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentGameBinding.inflate(LayoutInflater.from(requireParentFragment().getContext()));
         return binding.getRoot();
@@ -229,12 +229,12 @@ public class GameFragment extends Fragment {
     private void generateQuestionText() {
         LinearLayout.LayoutParams params = new LinearLayout
                 .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.setMargins(Math.round(15 * px), Math.round(15 * px), Math.round(15 * px), Math.round(3 * px));
+        params.setMargins(Math.round(15 * px), Math.round(40 * px), Math.round(15 * px), Math.round(3 * px));
 
         TextView textView = new TextView(requireActivity());
         textView.setLayoutParams(params);
         textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(Color.BLACK);
+        textView.setTextColor(Color.WHITE);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
         textView.setTypeface(Typeface.DEFAULT_BOLD);
         textView.setText(currentQuestion);

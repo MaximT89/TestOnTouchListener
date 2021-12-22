@@ -12,13 +12,12 @@ import java.util.Random;
 
 public class GeneratorAnimation {
 
-    public static View makeShakeAnimation(Context context, View view, int duration){
+    public static void makeShakeAnimation(View view, int duration){
         RotateAnimation anim = new RotateAnimation(-5, 5, 50, 50);
         anim.setDuration(duration);
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);
         view.startAnimation(anim);
-        return view;
     }
 
     public static int getRandomDuration(){

@@ -6,7 +6,7 @@
     app:startDestination="@id/startFragment">
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.testontouchlictener.presentation.StartFragment"
+        android:name="com.example.testontouchlictener.presentation.fragment.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.testontouchlictener.presentation.GameFragment"
+        android:name="com.example.testontouchlictener.presentation.fragment.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/choiseLevelFragment"
-        android:name="com.example.testontouchlictener.presentation.ChoiseLevelFragment"
+        android:name="com.example.testontouchlictener.presentation.fragment.ChoiseLevelFragment"
         android:label="fragment_choise_level"
         tools:layout="@layout/fragment_choise_level" >
         <action

@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_start_3"
-    tools:context=".presentation.StartFragment">
+    tools:context=".presentation.fragment.StartFragment">
+
+
 
     <LinearLayout
         android:id="@+id/block_game_name"
