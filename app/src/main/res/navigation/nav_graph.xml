@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/choiseLevelFragment"
-        android:name="com.example.testontouchlictener.presentation.fragment.ChoiseLevelFragment"
+        android:name="com.example.testontouchlictener.presentation.fragment.ChoiceLevelFragment"
         android:label="fragment_choise_level"
         tools:layout="@layout/fragment_choise_level" >
         <action
