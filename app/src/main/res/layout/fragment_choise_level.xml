@@ -23,9 +23,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="Выберите уровень"
-            android:textColor="@color/black"
             android:textSize="25dp"
-            android:textStyle="bold" />
+            style="@style/CustomTextViewBlack" />
     </FrameLayout>
 
 

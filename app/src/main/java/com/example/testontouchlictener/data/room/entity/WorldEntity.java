@@ -10,7 +10,7 @@ public class WorldEntity {
     public int idWorld;
     public int levelInWorld;
 
-    public WorldEntity(int idWorld, int levelInWorld) {
+    public WorldEntity(int idWorld, int levelInWorld ) {
         this.idWorld = idWorld;
         this.levelInWorld = levelInWorld;
     }

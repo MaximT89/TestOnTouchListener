@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -142,7 +144,6 @@ public class GameFragment extends Fragment {
 
                     getCurrentCenterView(view1);
 
-                    //todo тут нужно запустить проверку на пересечения с ячейками для букв
                     for (int i = 0; i < currentWord.length(); i++) {
 
                         if (requireActivity().findViewById(i + 1).getTop() < currentTop && requireActivity().findViewById(i + 1).getBottom() > currentTop
@@ -233,10 +234,9 @@ public class GameFragment extends Fragment {
 
         TextView textView = new TextView(requireActivity());
         textView.setLayoutParams(params);
+        textView.setTextAppearance(R.style.CustomTextViewWhite);
         textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(Color.WHITE);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-        textView.setTypeface(Typeface.DEFAULT_BOLD);
         textView.setText(currentQuestion);
 
         binding.container.addView(textView);
@@ -270,10 +270,9 @@ public class GameFragment extends Fragment {
 
             // todo сделать разные стили для букв под разные блоки с уровнями
             textView.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.border_letter));
+            textView.setTextAppearance(R.style.CustomTextViewWithoutShadowBlack);
             textView.setGravity(Gravity.CENTER);
-            textView.setTextColor(Color.BLACK);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-            textView.setTypeface(Typeface.DEFAULT_BOLD);
             textView.setId(i + 1 + 100);
 
             binding.container.addView(textView);
@@ -333,7 +332,7 @@ public class GameFragment extends Fragment {
         }
     }
 
-    // todo тестовый метод для отображения координат любого view в лог
+    // тестовый метод для отображения координат любого view в лог
     private void getCoordinate(View view) {
         Log.d(TAG, "view.getTop(): " + view.getTop());
         Log.d(TAG, "view.getBottom(): " + view.getBottom());
@@ -352,8 +351,5 @@ public class GameFragment extends Fragment {
     private void getCurrentCenterView(View view) {
         currentTop = view.getTop() + (view.getBottom() - view.getTop()) / 2;
         currentLeft = view.getLeft() + (view.getRight() - view.getLeft()) / 2;
-
-        Log.d(TAG, "currentTop: " + currentTop);
-        Log.d(TAG, "currentLeft: " + currentLeft);
     }
 }

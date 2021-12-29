@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="229dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/test_resycler_1"
+            tools:src="@drawable/test_resycler_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,13 +49,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginBottom="16dp"
             android:text="Прогресс мира: 25 / 100"
-            android:textColor="@color/white"
             android:textSize="25dp"
-            android:shadowRadius="10"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowColor="@android:color/black"
-            android:textStyle="bold"
+            style="@style/CustomTextViewWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -65,14 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:shadowColor="@android:color/black"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="10"
+            style="@style/CustomTextViewWhite"
             android:text="Мифы древней Греции"
-            android:textColor="@color/white"
             android:textSize="25dp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
